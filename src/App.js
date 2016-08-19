@@ -1,9 +1,22 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { fetchTweets } from '../Lib/Api' 
+
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {data: null};
+  }
+
+  componentDidMount() {
+    fetchTweets().then((response) => {
+     this.setState({data: response})
+    });
+  }
+
   render() {
+    console.log(this.state.data)
     return (
       <div className="App">
         <div className="tweeter-header">
@@ -11,6 +24,7 @@ class App extends Component {
           <span>#</span><input type="text" />
         </div>
         <h1>Tweets</h1>
+        // {this.data.map((item)) => ( <div>{item.text}</div> )}
       </div>
     );
   }
