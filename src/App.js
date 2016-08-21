@@ -24,7 +24,6 @@ class App extends Component {
           <span>#</span><input type="text" />
         </div>
         <h1>Tweets</h1>
-        // {this.data.map((item)) => ( <div>{item.text}</div> )}
       </div>
     );
   }

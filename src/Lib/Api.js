@@ -1,7 +1,6 @@
-// import axios from 'axios';
-var axios = require("axios")
+import axios from 'axios';
 
-exports.fetchTweets = function() {
+export function fetchTweets() {
 	axios.get('https://safe-headland-90182.herokuapp.com/')
 		.then(function(response) {
 			console.log(response.data);
