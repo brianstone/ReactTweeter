@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { fetchTweets } from '../Lib/Api' 
+import { fetchTweets } from './Lib/Api' 
 
 
 class App extends Component {
@@ -16,7 +16,7 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.data)
+    // console.log(this.state.data)
     return (
       <div className="App">
         <div className="tweeter-header">
@@ -24,6 +24,7 @@ class App extends Component {
           <span>#</span><input type="text" />
         </div>
         <h1>Tweets</h1>
+        {this.state.data}
       </div>
     );
   }
