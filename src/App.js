@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import { fetchTweets } from './Lib/Api' 
+import { fetchTweets } from './Lib/Api'
+import _ from 'lodash';
 
 
 class App extends Component {
@@ -15,6 +16,12 @@ class App extends Component {
     });
   }
 
+  tweets() {
+    _.map(this.state.data, (tweet) => {
+      return <div>{tweet.user}: {tweet.text}</div>
+    });
+  }
+
   render() {
     // console.log(this.state.data)
     return (
@@ -24,7 +31,7 @@ class App extends Component {
           <span>#</span><input type="text" />
         </div>
         <h1>Tweets</h1>
-        {this.state.data}
+        {this.tweets()}
       </div>
     );
   }
