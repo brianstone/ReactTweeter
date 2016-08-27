@@ -1,29 +1,31 @@
 import React, { Component } from 'react';
 import './App.css';
-import { fetchTweets } from './Lib/Api'
-import _ from 'lodash';
+import { fetchTweets } from './Lib/Api';
+// import _ from 'lodash';
 
 
 class App extends Component {
   constructor(props) {
     super(props);
+    this.tweets = this.tweets.bind(this);
     this.state = {data: null};
   }
 
   componentDidMount() {
     fetchTweets().then((response) => {
-     this.setState({data: response})
+      this.setState({data: response})
+      console.log(response)
     });
   }
 
   tweets() {
-    _.map(this.state.data, (tweet) => {
-      return <div>{tweet.user}: {tweet.text}</div>
+    this.state.data.map(tweet => {
+      return <li>{tweet.text}</li>
     });
   }
 
   render() {
-    // console.log(this.state.data)
+    console.log(this.state.data)
     return (
       <div className="App">
         <div className="tweeter-header">
@@ -31,7 +33,7 @@ class App extends Component {
           <span>#</span><input type="text" />
         </div>
         <h1>Tweets</h1>
-        {this.tweets()}
+        <ul>{this.tweets}</ul>
       </div>
     );
   }
