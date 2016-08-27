@@ -1,10 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 import { fetchTweets } from './Lib/Api';
-// import _ from 'lodash';
 
-
-class App extends Component {
+export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.tweets = this.tweets.bind(this);
@@ -26,6 +24,19 @@ class App extends Component {
 
   render() {
     console.log(this.state.data)
+    console.log("seven")
+    fetchTweets()
+      .then((response) => {
+       this.setState({data: response})
+      })
+      .catch((error) => {
+        console.log(error)
+      });
+  }
+
+  render() {
+    const {data} = this.state;
+    console.log(data)
     return (
       <div className="App">
         <div className="tweeter-header">
@@ -34,9 +45,10 @@ class App extends Component {
         </div>
         <h1>Tweets</h1>
         <ul>{this.tweets}</ul>
+        {data && data.map((tweet) => (
+          <div>{tweet.user}: {tweet.tweet}</div>
+        ))}
       </div>
     );
   }
 }
-
-export default App;
