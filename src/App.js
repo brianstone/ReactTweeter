@@ -9,7 +9,6 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log("seven")
     fetchTweets()
       .then((response) => {
        this.setState({data: response})
@@ -21,7 +20,6 @@ export default class App extends React.Component {
 
   render() {
     const {data} = this.state;
-    console.log(data)
     return (
       <div className="App">
         <div className="tweeter-header">
