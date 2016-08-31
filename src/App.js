@@ -28,7 +28,7 @@ export default class App extends React.Component {
         </div>
         {/* <h1>Tweets</h1>*/}
           {data && data.map((tweet) => (
-            <div>
+            <div className="list-tweets">
               <h1 key={tweet.id}>{tweet.user}</h1>
               <h3>{tweet.tweet}</h3>
             </div>
