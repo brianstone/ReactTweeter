@@ -1,11 +1,12 @@
-import axios from 'axios';
+// import axios from 'axios';
+import twitter from './twitter'
 
 export function fetchTweets() {
-  return axios.get('https://safe-headland-90182.herokuapp.com/')
-    .then(function(response) {
+  return twitter.get('search/tweets', {q: 'node'})
+    .then((response) => {
       return response.data;
     })
-    .catch(function(error) {
+    .catch((error) => {
       console.log(error);
     });
 }

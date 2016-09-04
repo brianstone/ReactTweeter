@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './App.css';
 import { fetchTweets } from './Lib/Api';
 
-export default class App extends React.Component {
+export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {data: null};
