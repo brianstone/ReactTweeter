@@ -11,3 +11,14 @@ export function fetchTweets() {
     });
 }
 
+
+
+export function fetchTweets() {
+  return twitter.get('/api')
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
