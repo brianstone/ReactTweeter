@@ -1,5 +1,4 @@
-// import axios from 'axios';
-import twitter from '../twitter'
+import axios from 'axios';
 
 // export function fetchTweets() {
 //   return twitter.get('search/tweets', {q: 'node'})
@@ -14,7 +13,7 @@ import twitter from '../twitter'
 
 
 export function fetchTweets() {
-  return twitter.get('/api')
+  return axios.get('/api')
     .then((response) => {
       return response.data;
     })
