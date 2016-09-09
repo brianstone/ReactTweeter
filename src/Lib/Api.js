@@ -10,10 +10,8 @@ import axios from 'axios';
 //     });
 // }
 
-
-
 export function fetchTweets() {
-  return axios.get('/api')
+  return axios.get('/search/tweets?q=node.js')
     .then((response) => {
       return response.data;
     })
