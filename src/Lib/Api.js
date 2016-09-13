@@ -13,7 +13,6 @@ import axios from 'axios';
 export function fetchTweets() {
   return axios.get('http://localhost:3001/api')
     .then((response) => {
-      // console.log(response.data.statuses)
       return response.data.statuses;
     })
     .catch((error) => {
