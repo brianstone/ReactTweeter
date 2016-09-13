@@ -1,4 +1,6 @@
 var Twitter = require('twitter')
+var dotenv = require('dotenv');
+dotenv.config();
 
 module.exports = new Twitter({
   consumer_key: process.env.TWITTER_CONSUMER_KEY,

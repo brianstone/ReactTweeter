@@ -20,6 +20,7 @@ export default class App extends Component {
 
   render() {
     const {data} = this.state;
+    console.log(data)
     return (
       <div className="App">
         <div className="tweeter-header">
@@ -29,8 +30,8 @@ export default class App extends Component {
         {/* <h1>Tweets</h1>*/}
           {data && data.map((tweet) => (
             <div className="list-tweets">
-              <h1 key={tweet.id}>{tweet.user}</h1>
-              <h3>{tweet.tweet}</h3>
+              <h1 key={tweet.id}>@{tweet.user.screen_name}</h1>
+              <h3>{tweet.text}</h3>
             </div>
           ))}
       </div>
