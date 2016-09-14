@@ -1,17 +1,24 @@
 import React, {Component} from 'react';
 import './App.css';
-import { fetchTweets } from './Lib/Api';
+import {fetchTweets} from './Lib/Api'
+import Tweets from './Tweets';
 
 export default class App extends Component {
-  constructor(props) {
+    constructor(props) {
     super(props);
     this.state = {data: null};
   }
 
+  // handleSearch(e) {
+  //   this.setState({
+  //     searchTerm: e.target.value
+  //   })
+  // }
   componentDidMount() {
     fetchTweets()
       .then((response) => {
-       this.setState({data: response})
+        console.log("here")
+        this.setState({data: response})
       })
       .catch((error) => {
         console.log(error)
@@ -24,15 +31,9 @@ export default class App extends Component {
       <div className="App">
         <div className="tweeter-header">
           <h1 className="tweeter-h1">Search for a hashtag</h1>
-          <span>#</span><input type="text" />
+          <span>#</span><input onChange={this.handleSearch} type="text" />
         </div>
-        {/* <h1>Tweets</h1>*/}
-          {data && data.map((tweet) => (
-            <div className="list-tweets">
-              <h1 key={tweet.id}>@{tweet.user.screen_name}</h1>
-              <h3>{tweet.text}</h3>
-            </div>
-          ))}
+        {data ? <Tweets data={data}/> : null}
       </div>
     );
   }
