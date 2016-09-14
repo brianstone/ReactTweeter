@@ -11,9 +11,9 @@ import axios from 'axios';
 // }
 
 export function fetchTweets() {
-  return axios.get('/search/tweets?q=node.js')
+  return axios.get('http://localhost:3001/api')
     .then((response) => {
-      return response.data;
+      return response.data.statuses;
     })
     .catch((error) => {
       console.log(error);
