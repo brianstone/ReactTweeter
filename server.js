@@ -6,10 +6,12 @@ const cors = require('cors');
 app.use(cors());
 
 app.use('/api', function (req, res) {
-	twitter.get('search/tweets', {q: 'node.js'}, function(error, tweets, response) {
+	console.log(req.query)
+	twitter.get('search/tweets', {q: req.query}, function(error, tweets, response) {
     res.json(tweets);
 	});
 });
+// /api?{}
 
 app.listen(3001, function() {
 	console.log('Example app listening on port 3001!');

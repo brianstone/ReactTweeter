@@ -6,18 +6,23 @@ import Tweets from './Tweets';
 export default class App extends Component {
     constructor(props) {
     super(props);
-    this.state = {data: null};
+    this.handleSearch = this.handleSearch.bind(this);
+    this.state = {
+      data: null,
+      query: "node.js"
+    };
   }
 
-  // handleSearch(e) {
-  //   this.setState({
-  //     searchTerm: e.target.value
-  //   })
-  // }
+  handleSearch(e) {
+    this.setState({
+      query: e.target.value
+    })
+  }
+
   componentDidMount() {
+    // const {query} = this.state;
     fetchTweets()
       .then((response) => {
-        console.log("here")
         this.setState({data: response})
       })
       .catch((error) => {
