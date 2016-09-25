@@ -21,7 +21,7 @@ export default class App extends Component {
 
   componentDidMount() {
     // const {query} = this.state;
-    fetchTweets()
+    fetchTweets(this.state.query)
       .then((response) => {
         this.setState({data: response})
       })
