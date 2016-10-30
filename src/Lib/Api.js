@@ -10,8 +10,8 @@ import axios from 'axios';
 //     });
 // }
 
-export function fetchTweets(query) {
-  return axios.get(`http://localhost:3001/api?q={query}`)
+export function fetchTweets() {
+  return axios.get(`http://localhost:3001/api?q=node.js`)
     .then((response) => {
       return response.data.statuses;
     })

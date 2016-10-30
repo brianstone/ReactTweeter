@@ -7,7 +7,7 @@ app.use(cors());
 
 app.use('/api', function (req, res) {
 	console.log(req.query)
-	twitter.get('search/tweets', {q: req.query}, function(error, tweets, response) {
+	twitter.get('search/tweets', {q: 'node.js'/*req.query*/}, function(error, tweets, response) {
     res.json(tweets);
 	});
 });

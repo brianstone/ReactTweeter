@@ -8,8 +8,8 @@ export default class App extends Component {
     super(props);
     this.handleSearch = this.handleSearch.bind(this);
     this.state = {
-      data: null,
-      query: "node.js"
+      data: null
+      // query: "node.js"
     };
   }
 
@@ -21,7 +21,7 @@ export default class App extends Component {
 
   componentDidMount() {
     // const {query} = this.state;
-    fetchTweets(this.state.query)
+    fetchTweets()
       .then((response) => {
         this.setState({data: response})
       })
