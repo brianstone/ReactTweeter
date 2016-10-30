@@ -7,6 +7,8 @@ To get started, run:<br>
 `$ git clone https://github.com/brianstone/reacttweeter`</br>
 `$ npm install`
 
+Add your Twitter credentials to `.env_example` and remove `_example`.
+
 #Run
 `$ npm start`<br>
 `$ npm run server`<br>

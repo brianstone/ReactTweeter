@@ -1,17 +1,29 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './App.css';
-import { fetchTweets } from './Lib/Api';
+import {fetchTweets} from './Lib/Api'
+import Tweets from './Tweets';
 
-export default class App extends React.Component {
-  constructor(props) {
+export default class App extends Component {
+    constructor(props) {
     super(props);
-    this.state = {data: null};
+    this.handleSearch = this.handleSearch.bind(this);
+    this.state = {
+      data: null
+      // query: "node.js"
+    };
+  }
+
+  handleSearch(e) {
+    this.setState({
+      query: e.target.value
+    })
   }
 
   componentDidMount() {
+    // const {query} = this.state;
     fetchTweets()
       .then((response) => {
-       this.setState({data: response})
+        this.setState({data: response})
       })
       .catch((error) => {
         console.log(error)
@@ -24,15 +36,9 @@ export default class App extends React.Component {
       <div className="App">
         <div className="tweeter-header">
           <h1 className="tweeter-h1">Search for a hashtag</h1>
-          <span>#</span><input type="text" />
+          <span>#</span><input onChange={this.handleSearch} type="text" />
         </div>
-        {/* <h1>Tweets</h1>*/}
-          {data && data.map((tweet) => (
-            <div className="list-tweets">
-              <h1 key={tweet.id}>{tweet.user}</h1>
-              <h3>{tweet.tweet}</h3>
-            </div>
-          ))}
+        {data ? <Tweets data={data}/> : null}
       </div>
     );
   }
